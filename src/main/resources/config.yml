@@ -1,0 +1,6 @@
+message:
+   #Should a message be sent when a player tries to leave his island?
+   enabled: true
+   
+   #If yes, what is the message?
+   text: "&cYou can't go any further."
