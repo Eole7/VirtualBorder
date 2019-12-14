@@ -1,6 +1,18 @@
-message:
-   #Should a message be sent when a player tries to leave his island?
-   enabled: true
-   
-   #If yes, what is the message?
-   text: "&cYou can't go any further."
+#Don't modify this value
+version: 1.7
+
+#Manage borders here
+borders:
+   exit_border:
+      #Should players be pushed back when exiting an island without teleporting?
+      enabled: true
+      
+      #What message should be sent when a player is pushed back? Leave blank and none message will be sent
+      message: "&cYou can't go any further."
+      
+   entry_border:
+      #Should players be pushed back when entering an island without teleporting?
+      enabled: true
+      
+      #What message should be sent when a player is pushed back? Leave blank and none message will be sent
+      message: "&cYou can't enter islands without teleporting to them."

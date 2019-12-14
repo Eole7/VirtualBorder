@@ -6,8 +6,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
 
-	String message_text = this.getConfig().getString("message.text").replace("&", "§");
-	boolean message_status = this.getConfig().getBoolean("message.enabled");
+	boolean exit_border_enabled;
+	String exit_border_message;
+	
+	boolean entry_border_enabled;
+	String entry_border_message;
 	
 	@Override
 	public void onEnable() {
@@ -57,8 +60,14 @@ public class Main extends JavaPlugin {
 			System.out.println("§cVirtualBorder failed to hook into ASkyBlock or BentoBox.");
 	    
 		}
-	    
+		
 		saveDefaultConfig();
+		
+		exit_border_enabled = this.getConfig().getBoolean("borders.exit_border.enabled");
+		exit_border_message = this.getConfig().getString("borders.exit_border.message").replaceAll("&", "§");
+		
+		entry_border_enabled = this.getConfig().getBoolean("borders.entry_border.enabled");
+		entry_border_message = this.getConfig().getString("borders.entry_border.message").replaceAll("&", "§");
 		
 	}
 	

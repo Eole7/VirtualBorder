@@ -6,7 +6,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import world.bentobox.bentobox.api.events.island.IslandEvent.IslandEnterEvent;
 import world.bentobox.bentobox.api.events.island.IslandEvent.IslandExitEvent;
+
 
 public class BentoBox implements Listener {
 	
@@ -19,71 +21,150 @@ public class BentoBox implements Listener {
 		
 	@EventHandler
 	
+	//Exit border
 	private void IslandExitEvent(IslandExitEvent event) {
 		
-		Player player = Bukkit.getPlayer(event.getPlayerUUID());
+		if(main.exit_border_enabled ==  true) {
 		
-		if(!player.hasPermission("virtualborder.bypass")) {
+			Player player = Bukkit.getPlayer(event.getPlayerUUID());
 			
-			Location player_location = player.getLocation();
-			Location island_centre_location = event.getIsland().getCenter();
-			double island_radius = event.getIsland().getProtectionRange();
-			double push_distance = 0.35;
-			
-			if(player_location.getZ() < -(island_radius-3)+island_centre_location.getZ() && player_location.getZ() > -(island_radius+1)+island_centre_location.getZ()) { //North border detection
-					
-				player_location.setZ(player_location.getZ()+push_distance);
-				player.teleport(player_location);
-			
- 				if(main.message_status == true) {
- 					
- 					player.sendMessage(main.message_text);
- 					
- 				}
- 				
-			}
+			if(!player.hasPermission("virtualborder.bypass")) {
 				
-			if(player_location.getX() > (island_radius-3)+island_centre_location.getX() && player_location.getX() < (island_radius+1)+island_centre_location.getX()) { //East border detection
-					
-				player_location.setX(player_location.getX()-push_distance);
-				player.teleport(player_location);
+				Location player_location = player.getLocation();
+				Location island_centre_location = event.getIsland().getCenter();
+				double island_radius = event.getIsland().getProtectionRange();
+				double push_distance = 0.35;
 				
- 				if(main.message_status == true) {
- 					
- 					player.sendMessage(main.message_text);
- 					
- 				}
- 				
-			}
-				
-			if(player_location.getZ() > (island_radius-3)+island_centre_location.getZ() && player_location.getZ() < (island_radius+1)+island_centre_location.getZ()) { //South border detection
-				
-				player_location.setZ(player_location.getZ()-push_distance);
-				player.teleport(player_location);
-				
- 				if(main.message_status == true) {
- 					
- 					player.sendMessage(main.message_text);
- 					
- 				}
-				
-			}
-		
-			if(player_location.getX() < -(island_radius-3)+island_centre_location.getX() && player_location.getX() > -(island_radius+1)+island_centre_location.getX()) { //West border detection
+				if(player_location.getZ() < -(island_radius-3)+island_centre_location.getZ() && player_location.getZ() > -(island_radius+1)+island_centre_location.getZ()) { //Player moving northwards
 						
-				player_location.setX(player_location.getX()+push_distance);
-				player.teleport(player_location);
-					
- 				if(main.message_status == true) {
- 					
- 					player.sendMessage(main.message_text);
- 					
- 				}
- 					
-			}
+					player_location.setZ(player_location.getZ()+push_distance);
+					player.teleport(player_location);
 				
+	 				if(!main.exit_border_message.equalsIgnoreCase("")) {
+	 					
+	 					player.sendMessage(main.exit_border_message);
+	 					
+	 				}
+	 				
+				}
+					
+				if(player_location.getX() > (island_radius-3)+island_centre_location.getX() && player_location.getX() < (island_radius+1)+island_centre_location.getX()) { //Player moving eastwards
+						
+					player_location.setX(player_location.getX()-push_distance);
+					player.teleport(player_location);
+					
+	 				if(!main.exit_border_message.equalsIgnoreCase("")) {
+	 					
+	 					player.sendMessage(main.exit_border_message);
+	 					
+	 				}
+	 				
+				}
+					
+				if(player_location.getZ() > (island_radius-3)+island_centre_location.getZ() && player_location.getZ() < (island_radius+1)+island_centre_location.getZ()) { //Player moving southwards
+					
+					player_location.setZ(player_location.getZ()-push_distance);
+					player.teleport(player_location);
+					
+	 				if(!main.exit_border_message.equalsIgnoreCase("")) {
+	 					
+	 					player.sendMessage(main.exit_border_message);
+	 					
+	 				}
+					
+				}
+			
+				if(player_location.getX() < -(island_radius-3)+island_centre_location.getX() && player_location.getX() > -(island_radius+1)+island_centre_location.getX()) { //Player moving westwards
+							
+					player_location.setX(player_location.getX()+push_distance);
+					player.teleport(player_location);
+						
+	 				if(!main.exit_border_message.equalsIgnoreCase("")) {
+	 					
+	 					player.sendMessage(main.exit_border_message);
+	 					
+	 				}
+	 					
+				}
+					
+			}
+		
 		}
 		
+	}
+	
+	@EventHandler
+	
+	//Entry border
+	private void IslandEnterEvent(IslandEnterEvent event) {
+		
+		if(main.entry_border_enabled ==  true) {
+		
+			Player player = Bukkit.getPlayer(event.getPlayerUUID());
+			
+			if(!player.hasPermission("virtualborder.bypass")) {
+				
+				Location player_location = player.getLocation();
+				Location island_centre_location = event.getIsland().getCenter();
+				double island_radius = event.getIsland().getProtectionRange();
+				double push_distance = 0.35;
+				
+				if(player_location.getZ() > (island_radius-1)+island_centre_location.getZ() && player_location.getZ() < (island_radius+3)+island_centre_location.getZ()) { //Player moving northward
+					
+					player_location.setZ(player_location.getZ()+push_distance);
+	 				player.teleport(player_location);
+	 				
+	 				if(!main.entry_border_message.equalsIgnoreCase("")) {
+	 					
+	 					player.sendMessage(main.entry_border_message);
+	 					
+	 				}
+	 				
+				}
+				
+				if(player_location.getX() < -(island_radius-1)+island_centre_location.getX() && player_location.getX() > -(island_radius+3)+island_centre_location.getX()) { //Player moving eastward
+	 				
+					player_location.setX(player_location.getX()-push_distance);
+	 				player.teleport(player_location);
+	 				
+	 				if(!main.entry_border_message.equalsIgnoreCase("")) {
+	 					
+	 					player.sendMessage(main.entry_border_message);
+	 					
+	 				}
+	 				
+				}
+				
+				if(player_location.getZ() < -(island_radius-1)+island_centre_location.getZ() && player_location.getZ() > -(island_radius+3)+island_centre_location.getZ()) { //Player moving southward
+					
+					player_location.setZ(player_location.getZ()-push_distance);
+	 				player.teleport(player_location);
+	 				
+	 				if(!main.entry_border_message.equalsIgnoreCase("")) {
+	 					
+	 					player.sendMessage(main.entry_border_message);
+	 					
+	 				}
+	 				
+				}
+						
+				if(player_location.getX() > (island_radius-1)+island_centre_location.getX() && player_location.getX() < (island_radius+3)+island_centre_location.getX()) { //Player moving westward
+							
+					player_location.setX(player_location.getX()+push_distance);
+	 				player.teleport(player_location);
+	 				
+	 				if(!main.entry_border_message.equalsIgnoreCase("")) {
+	 					
+	 					player.sendMessage(main.entry_border_message);
+	 					
+	 				}
+	 				
+				}
+					
+			}
+			
+		}
+	
 	}
 	
 }
