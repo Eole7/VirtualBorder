@@ -13,15 +13,12 @@ import com.wasteofplastic.askyblock.events.IslandExitEvent;
 public class ASkyBlock implements Listener {
 
 	private static Main main;
-	
 	public ASkyBlock(Main main) {
 		ASkyBlock.main = main;
 		
 	}
 	
 	@EventHandler
-	
-	//Exit border
 	private void IslandExitEvent(IslandExitEvent event) {
 		
 		if(main.exit_border_enabled ==  true) {
@@ -35,7 +32,8 @@ public class ASkyBlock implements Listener {
 				double island_radius = event.getIsland().getProtectionSize()/2;
 				double push_distance = 0.35;
 				
-				if(player_location.getZ() < -(island_radius-3)+island_centre_location.getZ() && player_location.getZ() > -(island_radius+1)+island_centre_location.getZ()) { //Player moving northward
+				//Northern border
+				if(player_location.getZ() < -(island_radius-3)+island_centre_location.getZ() && player_location.getZ() > -(island_radius+1)+island_centre_location.getZ()) {
 							
 					player_location.setZ(player_location.getZ()+push_distance);
 	 				player.teleport(player_location);
@@ -47,8 +45,9 @@ public class ASkyBlock implements Listener {
 	 				}
 	 				
 				}
-						
-				if(player_location.getX() > (island_radius-3)+island_centre_location.getX() && player_location.getX() < (island_radius+1)+island_centre_location.getX()) { //Player moving eastward
+				
+				//Eastern border
+				if(player_location.getX() > (island_radius-3)+island_centre_location.getX() && player_location.getX() < (island_radius+1)+island_centre_location.getX()) {
 							
 					player_location.setX(player_location.getX()-push_distance);
 	 				player.teleport(player_location);
@@ -61,7 +60,8 @@ public class ASkyBlock implements Listener {
 	 				
 				}
 				
-				if(player_location.getZ() > (island_radius-3)+island_centre_location.getZ() && player_location.getZ() < (island_radius+1)+island_centre_location.getZ()) { //Player moving southward
+				//Southern border
+				if(player_location.getZ() > (island_radius-3)+island_centre_location.getZ() && player_location.getZ() < (island_radius+1)+island_centre_location.getZ()) {
 							
 					player_location.setZ(player_location.getZ()-push_distance);
 	 				player.teleport(player_location);
@@ -74,7 +74,8 @@ public class ASkyBlock implements Listener {
 	 				
 				}
 			
-				if(player_location.getX() < -(island_radius-3)+island_centre_location.getX() && player_location.getX() > -(island_radius+1)+island_centre_location.getX()) { //Player moving westward
+				//Western border
+				if(player_location.getX() < -(island_radius-3)+island_centre_location.getX() && player_location.getX() > -(island_radius+1)+island_centre_location.getX()) {
 	 				
 					player_location.setX(player_location.getX()+push_distance);
 	 				player.teleport(player_location);
@@ -94,8 +95,6 @@ public class ASkyBlock implements Listener {
 	}
 	
 	@EventHandler
-	
-	//Entry border
 	private void IslandEnterEvent(IslandEnterEvent event) {
 		
 		if(main.entry_border_enabled ==  true) {
@@ -109,7 +108,8 @@ public class ASkyBlock implements Listener {
 				double island_radius = event.getIsland().getProtectionSize()/2;
 				double push_distance = 0.35;
 				
-				if(player_location.getZ() > (island_radius-1)+island_centre_location.getZ() && player_location.getZ() < (island_radius+3)+island_centre_location.getZ()) { //Player moving northward
+				//Northern border
+				if(player_location.getZ() > (island_radius-1)+island_centre_location.getZ() && player_location.getZ() < (island_radius+3)+island_centre_location.getZ()) { 
 					
 					player_location.setZ(player_location.getZ()+push_distance);
 	 				player.teleport(player_location);
@@ -122,7 +122,8 @@ public class ASkyBlock implements Listener {
 	 				
 				}
 				
-				if(player_location.getX() < -(island_radius-1)+island_centre_location.getX() && player_location.getX() > -(island_radius+3)+island_centre_location.getX()) { //Player moving eastward
+				//Eastern border
+				if(player_location.getX() < -(island_radius-1)+island_centre_location.getX() && player_location.getX() > -(island_radius+3)+island_centre_location.getX()) { 
 	 				
 					player_location.setX(player_location.getX()-push_distance);
 	 				player.teleport(player_location);
@@ -135,7 +136,8 @@ public class ASkyBlock implements Listener {
 	 				
 				}
 				
-				if(player_location.getZ() < -(island_radius-1)+island_centre_location.getZ() && player_location.getZ() > -(island_radius+3)+island_centre_location.getZ()) { //Player moving southward
+				//Southern border
+				if(player_location.getZ() < -(island_radius-1)+island_centre_location.getZ() && player_location.getZ() > -(island_radius+3)+island_centre_location.getZ()) {
 							
 					player_location.setZ(player_location.getZ()-push_distance);
 	 				player.teleport(player_location);
@@ -147,8 +149,9 @@ public class ASkyBlock implements Listener {
 	 				}
 	 				
 				}
-						
-				if(player_location.getX() > (island_radius-1)+island_centre_location.getX() && player_location.getX() < (island_radius+3)+island_centre_location.getX()) { //Player moving westward
+				
+				//Western border
+				if(player_location.getX() > (island_radius-1)+island_centre_location.getX() && player_location.getX() < (island_radius+3)+island_centre_location.getX()) { 
 							
 					player_location.setX(player_location.getX()+push_distance);
 	 				player.teleport(player_location);
