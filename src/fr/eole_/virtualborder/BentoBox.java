@@ -28,12 +28,12 @@ public class BentoBox implements Listener {
 			if(!player.hasPermission("virtualborder.bypass")) {
 				
 				Location player_location = player.getLocation();
-				Location island_centre_location = event.getIsland().getCenter();
+				Location island_center_location = event.getIsland().getCenter();
 				double island_radius = event.getIsland().getProtectionRange();
 				double push_distance = 0.35;
 				
 				//Northern border
-				if(player_location.getZ() < -(island_radius-3)+island_centre_location.getZ() && player_location.getZ() > -(island_radius+1)+island_centre_location.getZ()) {
+				if(player_location.getZ() < -(island_radius-3)+island_center_location.getZ() && player_location.getZ() > -(island_radius+1)+island_center_location.getZ()) {
 						
 					player_location.setZ(player_location.getZ()+push_distance);
 					player.teleport(player_location);
@@ -47,7 +47,7 @@ public class BentoBox implements Listener {
 				}
 				
 				//Eastern border
-				if(player_location.getX() > (island_radius-3)+island_centre_location.getX() && player_location.getX() < (island_radius+1)+island_centre_location.getX()) {
+				if(player_location.getX() > (island_radius-3)+island_center_location.getX() && player_location.getX() < (island_radius+1)+island_center_location.getX()) {
 						
 					player_location.setX(player_location.getX()-push_distance);
 					player.teleport(player_location);
@@ -61,7 +61,7 @@ public class BentoBox implements Listener {
 				}
 				
 				//Southern border
-				if(player_location.getZ() > (island_radius-3)+island_centre_location.getZ() && player_location.getZ() < (island_radius+1)+island_centre_location.getZ()) {
+				if(player_location.getZ() > (island_radius-3)+island_center_location.getZ() && player_location.getZ() < (island_radius+1)+island_center_location.getZ()) {
 					
 					player_location.setZ(player_location.getZ()-push_distance);
 					player.teleport(player_location);
@@ -75,7 +75,7 @@ public class BentoBox implements Listener {
 				}
 			
 				//Western border
-				if(player_location.getX() < -(island_radius-3)+island_centre_location.getX() && player_location.getX() > -(island_radius+1)+island_centre_location.getX()) {
+				if(player_location.getX() < -(island_radius-3)+island_center_location.getX() && player_location.getX() > -(island_radius+1)+island_center_location.getX()) {
 							
 					player_location.setX(player_location.getX()+push_distance);
 					player.teleport(player_location);
@@ -104,12 +104,12 @@ public class BentoBox implements Listener {
 			if(!player.hasPermission("virtualborder.bypass")) {
 				
 				Location player_location = player.getLocation();
-				Location island_centre_location = event.getIsland().getCenter();
+				Location island_center_location = event.getIsland().getCenter();
 				double island_radius = event.getIsland().getProtectionRange();
 				double push_distance = 0.35;
 				
 				//Northern border
-				if(player_location.getZ() > (island_radius-1)+island_centre_location.getZ() && player_location.getZ() < (island_radius+3)+island_centre_location.getZ()) {
+				if(player_location.getZ() > (island_radius-1)+island_center_location.getZ() && player_location.getZ() < (island_radius+3)+island_center_location.getZ()) {
 					
 					player_location.setZ(player_location.getZ()+push_distance);
 	 				player.teleport(player_location);
@@ -123,7 +123,7 @@ public class BentoBox implements Listener {
 				}
 				
 				//Eastern border
-				if(player_location.getX() < -(island_radius-1)+island_centre_location.getX() && player_location.getX() > -(island_radius+3)+island_centre_location.getX()) {
+				if(player_location.getX() < -(island_radius-1)+island_center_location.getX() && player_location.getX() > -(island_radius+3)+island_center_location.getX()) {
 	 				
 					player_location.setX(player_location.getX()-push_distance);
 	 				player.teleport(player_location);
@@ -137,7 +137,7 @@ public class BentoBox implements Listener {
 				}
 				
 				//Southern border
-				if(player_location.getZ() < -(island_radius-1)+island_centre_location.getZ() && player_location.getZ() > -(island_radius+3)+island_centre_location.getZ()) {
+				if(player_location.getZ() < -(island_radius-1)+island_center_location.getZ() && player_location.getZ() > -(island_radius+3)+island_center_location.getZ()) {
 					
 					player_location.setZ(player_location.getZ()-push_distance);
 	 				player.teleport(player_location);
@@ -151,7 +151,7 @@ public class BentoBox implements Listener {
 				}
 				
 				//Western border
-				if(player_location.getX() > (island_radius-1)+island_centre_location.getX() && player_location.getX() < (island_radius+3)+island_centre_location.getX()) {
+				if(player_location.getX() > (island_radius-1)+island_center_location.getX() && player_location.getX() < (island_radius+3)+island_center_location.getX()) {
 							
 					player_location.setX(player_location.getX()+push_distance);
 	 				player.teleport(player_location);
